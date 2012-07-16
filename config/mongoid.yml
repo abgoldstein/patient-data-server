@@ -11,5 +11,4 @@ staging:
   database: hdata_server_staging
 
 production:
-  host: localhost
-  database: hdata_server_production
+  uri: <%= ENV['MONGOHQ_URL'] %>
