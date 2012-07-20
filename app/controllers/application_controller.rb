@@ -6,13 +6,18 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :audit_log_all
   before_filter :set_breadcrumbs
+  before_filter :is_hreader_ipad
 
   rescue_from RequestError do |e|
     if e.message.nil?
-      render file: "public/#{e.status}.html", :status => e.status
+      render file: "public/#{e.status}.html", status: e.status
     else
-      render text: e.message, :status => e.status
+      render text: e.message, status: e.status
     end
+  end
+  
+  def is_hreader_ipad
+    @hreader_ipad = (request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].match(/^hReader\/iPad\//i))
   end
 
   # Return a list of breadcrumbs appropriate for the particular controller. This method can be overridden by
