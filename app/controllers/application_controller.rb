@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
   
   def is_hreader_ipad
-    @hreader_ipad = (request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].match(/^hReader\/iPad\//i))
+    @hreader_ipad = (request.headers["x-org-mitre-hreader"] == "ipad")
   end
 
   # Return a list of breadcrumbs appropriate for the particular controller. This method can be overridden by
