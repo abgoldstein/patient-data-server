@@ -31,6 +31,9 @@ group :production do
   gem 'thin'
 end
 
+group :development, :test do
+  gem 'debugger'
+end
 
 group :test do
   gem 'turn', :require => false

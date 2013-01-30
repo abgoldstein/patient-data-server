@@ -48,6 +48,7 @@ HdataServer::Application.routes.draw do
   resources :records do
     resources :c32
     resources :vital_sign_feeds
+    resources :comments
   end
 
   #
@@ -61,6 +62,14 @@ HdataServer::Application.routes.draw do
   match "records/:record_id/:section/:id" => "entries#show", :as => :section_document, :via => :get
   match "records/:record_id/:section" => "entries#create", :as => :new_section_document, :via => :post
   match "records/:record_id/:section/:id" => "entries#update", :as => :update_section_document, :via => :put
+
+  match "records/:record_id/:section/:entry_id/comments" => "comments#index", :as => :section_document_comments, :via => :get
+  match "records/:record_id/:section/:entry_id/comments/new" => "comments#new", :as => :new_section_document_comment, :via => :get
+  match "records/:record_id/:section/:entry_id/comments" => "comments#create", :as => :create_section_document_comment, :via => :post
+  match "records/:record_id/:section/:entry_id/comments/:id" => "comments#show", :as => :section_document_comment, :via => :get
+  match "records/:record_id/:section/:entry_id/comments/:id/edit" => "comments#edit", :as => :edit_section_document_comment, :via => :get
+  match "records/:record_id/:section/:entry_id/commants/:id" => "comments#update", :as => :update_section_document_comment, :via => :put
+  match "records/:record_id/:section/:entry_id/comments/:id" => "comments#destroy", :as => :delete_section_document_comment, :via => :delete
 
   root :to =>  "records#index"
 

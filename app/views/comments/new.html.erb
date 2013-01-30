@@ -1,0 +1,9 @@
+<h1>New Comment</h1>
+
+<%= form_for(@comment, :url => create_section_document_comment_path(@record.medical_record_number, @section_name, @entry)) do |f| %>
+	<%= render :partial => 'form', :locals => {:comment => @comment, :f => f} %>
+  <div class="actions">
+    <%= f.submit "Save" %> |
+    <%= link_to "Cancel", section_document_comments_path(@record.medical_record_number, @section_name, @entry) %>
+  </div>
+<% end %>

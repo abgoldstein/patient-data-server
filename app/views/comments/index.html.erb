@@ -1,0 +1,17 @@
+<h2>Comments</h2>
+
+<% @comments.each do |comment| %>
+  <div class="comment">
+  	<h4><%= comment.author %></h4>
+  	<p><%= comment.text %></p>
+    <p>
+  	 <%= link_to "Edit", edit_section_document_comment_path(@record.medical_record_number, @section_name, @entry, comment) %>
+    </p>
+  </div>
+  <hr />
+<% end %>
+
+<p>
+	<%= link_to "New comment", new_section_document_comment_path(@record.medical_record_number, @section_name, @entry) %> |
+  <%= link_to "Return to Patient record", root_feed_path(@record.medical_record_number) %>
+</p>
