@@ -6,4 +6,6 @@ class Comment
   field :text, :type => String
   field :author, :type => String
   field :category, :type => String
+
+  validates_presence_of :author, :text
 end

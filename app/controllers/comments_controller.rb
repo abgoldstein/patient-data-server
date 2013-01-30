@@ -34,16 +34,8 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(params[:comment])
-    respond_to do |format|
-      if comment.valid?
-        @entry.comments << comment
-        format.html { redirect_to_index }
-        format.json { render json: comment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @entry.comments << comment if comment.valid?
+    respond_with(comment, location: redirect_to_index)
   end
 
   # GET /record/:record_id/:section_name/:entry_id/comments/:id/edit
@@ -55,27 +47,17 @@ class CommentsController < ApplicationController
   # PUT /record/:record_id/:section_name/:entry_id/comments/:id.json
 
   def update
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to_index }
-        format.json { render json: @comment }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @comment.update_attributes(params[:comment])
+    respond_with(@comment, location: redirect_to_index)
   end
 
   # DELETE /record/:record_id/:section_name/:entry_id/comments/:id
   # DELETE /record/:record_id/:section_name/:entry_id/comments/:id.json
-  #
-  # def destroy
-  #   @comment.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to_index }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  
+  def destroy
+    @comment.destroy
+    respond_with(@comment, location: redirect_to_index)
+  end
 
   private
 
@@ -107,7 +89,7 @@ class CommentsController < ApplicationController
   end
 
   def redirect_to_index
-    redirect_to section_document_comments_path(@record.medical_record_number, @section_name, @entry)
+    section_document_comments_path(@record.medical_record_number, @section_name, @entry)
   end
 
 end
