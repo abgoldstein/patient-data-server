@@ -8,7 +8,7 @@
   <templateId root="2.16.840.1.113883.3.88.11.32.1" assigningAuthorityName="HITSP/C32"/>
   <id root="2.16.840.1.113883.3.72" extension="HITSP_C32v2.5_Rev6_16Sections_Entries_MinimalErrors" assigningAuthorityName="NIST Healthcare Project"/>
   <code code="34133-9" displayName="Summarization of episode note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-  <title>Cypress C32 Patient Test Record: Tom Smith59</title>
+  <title>Cypress C32 Patient Test Record: Tom Smith*</title>
   <effectiveTime value="20120229183531"/>
   <confidentialityCode code="N"/>
   <languageCode code="nn-CC"/>
@@ -25,7 +25,7 @@
       <patient>
         <name>
           <given>Tom</given>
-          <family>Smith59</family>
+          <family>Smith*</family>
         </name>
         <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 AdministrativeGender"/>
         <birthTime value="19671229050000"/>
@@ -67,11 +67,33 @@
   </custodian>
   <component>
     <structuredBody>
-        <component>          <!-- Allergies: patient has no allergies -->            <section>             <templateId root="2.16.840.1.113883.3.88.11.83.102" assigningAuthorityName="HITSP/C83"/>
+        <component>
+          <!-- Allergies: patient has no allergies -->
+            <section>
+             <templateId root="2.16.840.1.113883.3.88.11.83.102" assigningAuthorityName="HITSP/C83"/>
              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.13" assigningAuthorityName="IHE PCC"/>
              <templateId root="2.16.840.1.113883.10.20.1.2" assigningAuthorityName="HL7 CCD"/>
-              <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem List"/>              <title>Allergies and Adverse Reactions</title>                               <text>                <table border="1" width="100%">                  <thead>                    <tr>                      <th>Description</th>                                            <th>Code</th>                                            <th>Time</th>                    </tr>                  </thead>                  <tbody>                    <tr ID="noallergies_summary">                                                                 <td ID="noallergies">No Known allergies</td>
-                      <td>160244002</td>                                                               <td>20120229183531</td>                    </tr>                                    </tbody>               </table>                                          </text>             <entry typeCode="DRIV">
+              <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem List"/>
+              <title>Allergies and Adverse Reactions</title>                
+               <text>
+                <table border="1" width="100%">
+                  <thead>
+                    <tr>
+                      <th>Description</th>                      
+                      <th>Code</th>                      
+                      <th>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ID="noallergies_summary">                                           
+                      <td ID="noallergies">No Known allergies</td>
+                      <td>160244002</td>                                         
+                      <td>20120229183531</td>
+                    </tr>                   
+                 </tbody>
+               </table>                             
+             </text>
+             <entry typeCode="DRIV">
               <act classCode="ACT" moodCode="EVN">
                 <templateId root="2.16.840.1.113883.10.20.1.27"/>
                 <templateId root="2.16.840.1.113883.3.88.11.83.6"/>
@@ -106,6 +128,7 @@
           </entry>
         </section>
       </component>
+
         <component>
   <!--Medications-->
   <section>
@@ -129,7 +152,16 @@
           <td ID="medications-desc-0">Insulin</td>
           <td ID="medications-code-0">RxNorm: 847207</td>
           <td>April 16th, 2010 00:00</td>
-           
+        </tr>
+        <tr>
+          <td ID="medications-desc-0">Simvastatin</td>
+          <td ID="medications-code-0">RxNorm: 847207</td>
+          <td>April 16th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-0">Plavix</td>
+          <td ID="medications-code-0">RxNorm: 847207</td>
+          <td>April 16th, 2010 00:00</td>
         </tr>
     </tbody>
   </table>
@@ -154,11 +186,71 @@
             <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
             <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
             <manufacturedMaterial>
-              <code code="847207" codeSystem="2.16.840.1.113883.6.88" displayName="Insulin">
+              <code code="847207" codeSystem="2.16.840.1.113883.6.88" displayName="3 ML Insulin Lispro">
   <originalText><reference value="#medications-desc-0"/></originalText>
 </code>
 
               <name>Insulin</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="155df170-4532-012f-8a61-1027e4ed6988"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100625040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="312961" codeSystem="2.16.840.1.113883.6.88" displayName="Simvastatin 20 MG Oral Tablet">
+  <originalText><reference value="#medications-desc-0"/></originalText>
+</code>
+
+              <name>Simvastatin 20 MG Oral Tablet</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="155df170-4532-012f-8a61-1027e4ed6988"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100625040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="213169" codeSystem="2.16.840.1.113883.6.88" displayName="Plavix 75 MG Oral Tablet">
+  <originalText><reference value="#medications-desc-0"/></originalText>
+</code>
+
+              <name>Plavix 75 MG Oral Tablet</name>
             </manufacturedMaterial>
           </manufacturedProduct>
         </consumable>
@@ -291,6 +383,12 @@
             <td>active</td>
            
         </tr>
+        <tr>
+          <td ID="conditions-desc-0">Elevated cholesterol</td>
+          <td ID="conditions-code-0"></td>
+          <td>07/02/2002</td>
+          <td>Active</td>
+        </tr>
     </tbody>
   </table>
 </text>
@@ -332,6 +430,66 @@
                 <statusCode code="completed"/>
                 <value xsi:type="CE" code="55561003" codeSystem="2.16.840.1.113883.6.96"/>
               </observation>
+            </entryRelationship>
+          </observation>
+        </entryRelationship>
+      </act>
+    </entry>
+    <entry typeCode="DRIV" contextConductionInd="true">
+      <act classCode="ACT" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.27"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5.2"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5.1"/>
+        <id root="1.3.6.1.4.1.16517" extension="1256161"/>
+        <code nullFlavor="NA"/>
+        <statusCode code="active"/>
+        <effectiveTime>
+          <low value="20020702"/>
+        </effectiveTime>
+        <entryRelationship typeCode="SUBJ" inversionInd="false" contextConductionInd="true">
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.10.20.1.28"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5"/>
+            <id root="1.3.6.1.4.1.16517" extension="1256161"/>
+            <code code="55607006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED" displayName="Problem"/>
+            <text mediaType="text/plain">
+              <reference value="#Problem-1256161"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime>
+              <low nullFlavor="UNK"/>
+            </effectiveTime>
+            <value d5p1:type="CD" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" code="13644009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED" displayName="Hypercholesterolemia">
+              <originalText>Elevated cholesterol</originalText>
+              <translation code="124" codeSystem="1.3.6.1.4.1.16517.4.2" codeSystemName="PHS_PPL" displayName="elevated cholesterol"/>
+            </value>
+            <entryRelationship typeCode="REFR" contextConductionInd="true">
+              <observation classCode="OBS" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.1.50"/>
+                <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+                <statusCode code="completed"/>
+                <value d5p1:type="CD" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Active"/>
+              </observation>
+            </entryRelationship>
+            <entryRelationship typeCode="REFR" contextConductionInd="true">
+              <observation classCode="OBS" moodCode="EVN">
+                <code code="48766-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Information source"/>
+                <statusCode code="completed"/>
+                <value d5p1:type="ST" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance">HUANG,YI, M.D.</value>
+              </observation>
+            </entryRelationship>
+            <entryRelationship typeCode="SUBJ" inversionInd="true">
+              <act classCode="ACT" moodCode="EVN">
+                <templateId root="2.16.840.1.113883.10.20.1.40"/>
+                <templateId root="2.16.840.1.113883.3.88.11.83.11"/>
+                <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.2"/>
+                <code code="48767-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Annotation Comment"/>
+                <text>
+                  <reference value="#comment-1256161"/>
+                </text>
+                <statusCode code="completed"/>
+              </act>
             </entryRelationship>
           </observation>
         </entryRelationship>

@@ -4,13 +4,13 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= f.email_field :email, placeholder: "Email address" %></div>
 
   <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, placeholder: "Password" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm password" %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

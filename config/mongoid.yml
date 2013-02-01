@@ -13,8 +13,4 @@ test:
         - <%= ENV['TEST_DB_HOST'] || 'localhost' %>:27017
 
 production:
-  sessions:
-    default:
-      database: patient_data_server_production
-      hosts:
-        - localhost:27017
+  uri: <%= ENV['MONGOHQ_URL'] %>
