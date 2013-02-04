@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 #  protect_from_forgery
 
   before_filter :authenticate_user!
-  before_filter :audit_log_all
+  #before_filter :audit_log_all
   before_filter :set_breadcrumbs
   before_filter :is_hreader_ipad
 
