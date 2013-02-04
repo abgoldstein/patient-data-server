@@ -51,6 +51,10 @@ GEM
     arel (3.0.2)
     attr_required (0.0.5)
     bcrypt-ruby (3.0.1)
+    bson (1.8.0)
+      activesupport
+    bson_ext (1.8.0)
+      bson (~> 1.8.0)
     builder (3.0.3)
     capistrano (2.13.4)
       highline
@@ -273,6 +277,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson_ext
   capistrano
   coffee-rails (~> 3.2.1)
   cover_me

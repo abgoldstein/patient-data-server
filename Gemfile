@@ -5,6 +5,7 @@ gem 'rails', '3.2.8'
 gem "health-data-standards", '~> 2.0.0'
 gem 'ruby-openid'
 gem "mongoid", '~> 3.0.6'
+gem "bson_ext"
 gem "pry"
 gem 'pry-nav'
 gem "capistrano"
